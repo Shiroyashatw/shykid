@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- 引用google字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!--  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 引用fontawesome icon -->
+    <script src="https://kit.fontawesome.com/da3a6ce48e.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <title>登入</title>
+</head>
+
+<body>
+
+    
+    
+    <div class="login-body">
+        <div class="login-main">
+            <div class="login-backImage"></div>
+            <div class="login-container">
+                <div class="login-text">
+                    <form asp-action="login" method="post">
+                        <h1>登入</h1>
+                        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" placeholder="帳號">
+                        <input type="text" class="login" name="Account" placeholder="帳號">
+                        <input type="password" class="login" name="Password" placeholder="密碼">
+
+                        <a asp-area="" asp-controller="Member" asp-action="Singup" class="forget">沒有帳號?</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Forget" class="forget">忘記密碼?</a>
+                        <div class="enter">
+                            <button type="submit" class="enterbtn">登入</button>
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+
+</body>
+
+
+</html>

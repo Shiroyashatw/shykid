@@ -1,0 +1,127 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- 引用google字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!--  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 引用fontawesome icon -->
+    <script src="https://kit.fontawesome.com/da3a6ce48e.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <title>狗狗資訊</title>
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <div class="main-header">
+        <div class="container">
+            <h1>
+                <i class="fa-solid fa-dog">
+                    ShyKid
+                </i>
+            </h1>
+            <nav>
+                <ul class="main-menu">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">首頁<i class="fa-solid fa-house"></i></a></li>
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="">領養<i class="fa-solid fa-paw"></i></a>
+                        <ul class="dropdown">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Adoption">領養資訊</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="" asp-action="">動物百科<i class="fa-solid fa-book-open"></i></a>
+                        <ul class="dropdown">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Vaccine">疫苗知識</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Disease">常見症狀</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Forum">討論區<i class="fa-solid fa-bone"></i></a>
+                        <ul class="dropdown">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Column">專欄報導</a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Aboutus">關於我們<i class="fa-regular fa-address-card"></i></a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Member" asp-action="Login">登入/註冊<i class="fa-solid fa-user-plus"></i></a>
+                        <ul class="dropdown">
+                            <li><a asp-area="" asp-controller="" asp-action="">@User.Identity.Name</a></li>
+                            <li><a asp-area="" asp-controller="Member" asp-action="Logout">登出</a></li>
+                        </ul>
+                    </li>
+
+
+
+
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="adoptionpage-body">
+        <h1>簡報</h1>
+        
+        <a href="~/lib/小專題發表.pdf" download>ppt.pdf</a>
+        <a href="~/lib/小專題發表.pptx" download>ppt</a>
+    </div>
+
+    <!-- 尾部區塊 -->
+    @*<div class="footer">
+        <div class="footer-wrap">
+            <div class="footer-box">
+                <div class="footer-content">
+                    <h3>內部資訊</h3>
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Vaccine"><i
+                                    class="fa-solid fa-angle-right"></i>疫苗知識</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Disease"><i
+                                    class="fa-solid fa-angle-right"></i>常見症狀</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Column"><i
+                                    class="fa-solid fa-angle-right"></i>專欄報導</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-box">
+                <div class="footer-content">
+                    <h3>領養資訊</h3>
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Adoption"><i
+                                    class="fa-solid fa-angle-right"></i>領養布告欄</a></li>
+                        <li><a href="https://www.animal.taichung.gov.tw/1521500/Lpsimplelist"><i
+                                    class="fa-solid fa-angle-right"></i>市府布告欄</a></li>
+                        <li><a href="https://www.animal.taichung.gov.tw/1521481/Normalnodelist"><i
+                                    class="fa-solid fa-angle-right"></i>動物之家</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-box">
+                <div class="footer-content">
+                    <h3>追蹤我們</h3>
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/home?lang=zh-Hant"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>*@
+</body>
+
+</html>

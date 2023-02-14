@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- 引用google字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!--  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 引用fontawesome icon -->
+    <script src="https://kit.fontawesome.com/da3a6ce48e.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <title>領養資訊</title>
+</head>
+
+<body style="
+
+background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+background-blend-mode: screen;">
+    <!-- 導覽列 -->
+    
+    <div class="adoption-title">
+        <h2>領養布告欄<i class="fa-solid fa-heart"></i></h2>
+    </div>
+    
+    <div class="main-body">
+        <div class="sidemenu" id="checkbox" onclick="select_()">
+            <h4>條件類型</h4>
+            <h6>性別</h6>
+            <label>
+                <input type="checkbox" name="dog-sex" class="picks dogsex" value="male">
+                <span class="round button">
+                    公
+                </span>
+            </label>
+            <label>
+                <input type="checkbox" name="dog-sex" class="picks dogsex" value="female">
+                <span class="round button">
+                    母
+                </span>
+            </label>
+            <h6>年齡</h6>
+            <label>
+                <input type="checkbox" name="dog-age" class="picks dogage" value="kid">
+                <span class="round button">
+                    幼犬
+                </span>
+            </label>
+            <label>
+                <input type="checkbox" name="dog-age" class="picks dogage" value="young">
+                <span class="round button">
+                    成犬
+                </span>
+            </label>
+        </div>
+        <div class="main-box">
+        </div>
+    </div>
+
+    
+
+    <script>
+
+        $(function () {
+
+            var petList = [
+                { "titlesex": "公", "titleage": "幼犬","sex": "male", "age": "kid", "img": "/img/adoptiondog01.png", "asphref": "adoptionpage01" },
+                { "titlesex": "母", "titleage": "幼犬","sex": "female", "age": "kid", "img": "/img/adoptiondog02.png", "asphref": "adoptionpage02" },
+                { "titlesex": "母", "titleage": "成犬","sex": "female", "age": "young", "img": "/img/adoptiondog03.jpg", "asphref": "adoptionpage03" },
+                { "titlesex": "公", "titleage": "成犬","sex": "male", "age": "young", "img": "/img/adoptiondog04.jpg", "asphref": "adoptionpage04" },
+                { "titlesex": "公", "titleage": "幼犬","sex": "male", "age": "kid", "img": "/img/adoptiondog05.jpg", "asphref": "adoptionpage05" },
+                { "titlesex": "母", "titleage": "幼犬","sex": "female", "age": "kid", "img": "/img/adoptiondog06.jpg", "asphref": "adoptionpage06" },
+                { "titlesex": "母", "titleage": "成犬","sex": "female", "age": "young", "img": "/img/adoptiondog07.jpg", "asphref": "adoptionpage07" },
+                { "titlesex": "公", "titleage": "成犬","sex": "male", "age": "young", "img": "/img/adoptiondog08.jpg", "asphref": "adoptionpage08" },
+            ]
+            // 陣列循環取出值 顯示在網頁
+            $.each(petList, function (index, obj) {
+                // var petimg = obj.img;
+                var pettitlesex = obj.titlesex
+                var pettitleage = obj.titleage
+                var petsex = obj.sex;
+                var petage = obj.age;
+                var petimg = obj.img;
+                var petlink = obj.asphref;
+                // var age = '';
+                // if (obj.age != null) {
+                //     age = `<h1>${obj.age}</h1>`
+                // }
+                let imgList = `<div class="box displayElement" data-sex="${petsex}" data-age="${petage}" > <a href="${petlink}"><img src="${petimg}" alt=""></a>
+                <h4>性別:${pettitlesex}</br>
+                年齡:${pettitleage}<h4/>
+                </div>
+                `
+                $(".main-box").append(imgList);
+            })
+        })
+
+        //要呈現的元素
+        displayElement = document.getElementsByClassName("displayElement");
+        //列出有哪些選項
+        picks = document.getElementsByClassName("picks");
+        picksArray = new Array();
+        //將所有選項填加 至陣列
+        for (var x = 0; x < picks.length; x++) {
+            picksArray.push(picks[x].className.replace("picks ", ""));
+        }
+        //刪除重複的選項 歸類出哪幾種選項
+        picksArray = [...new Set(picksArray)]
+        console.log("沒有重複的選項有 = " + picksArray);
+
+        function select_() {
+            //關鍵字陣列
+            keyArray = new Array();
+
+            //將有勾選沒勾選 一個都沒選 進行一系列的判斷 儲存關鍵字
+            //第一個判斷有無勾選 一個都沒勾就等於 全部都要看到 所以加入全部
+            //反之 當一個有勾選 其他無視 則加入有勾選的
+            for (var x = 0; x < picksArray.length; x++) {
+                if (!haveCk(picksArray[x])) { PushAll(picksArray[x]) } else { PushOne(picksArray[x]) }
+            }
+
+            //經過關鍵字陣列搜尋後 有=顯示 無=隱藏
+            //這個寫法有個問題是 當新增一種data-NAME 都要在if內手動新增篩選
+            for (var z = 0; z < displayElement.length; z++) {
+                if (keyArray.indexOf(displayElement[z].dataset.age) != -1 &&
+                    keyArray.indexOf(displayElement[z].dataset.sex) != -1
+                ) {
+                    displayElement[z].style.display = "block";
+                } else {
+                    displayElement[z].style.display = "none";
+                }
+            }
+        }
+        //檢查是否有任一選項被勾選
+        function haveCk(tagName) {
+            CkBox = document.getElementsByClassName(tagName);
+            for (var x = 0; x < CkBox.length; x++) {
+                if (CkBox[x].checked == true) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //填加某分類 所有選項至關鍵字陣列
+        function PushAll(tagName) {
+            pushName = document.getElementsByClassName(tagName);
+            for (var x = 0; x < pushName.length; x++) {
+                keyArray.push(pushName[x].value);
+            }
+            console.log("關鍵字暫存 = " + keyArray)
+        }
+
+        //僅填加被勾選的選項至 關鍵字陣列
+        function PushOne(tagName) {
+            pushName = document.getElementsByClassName(tagName);
+            for (var x = 0; x < pushName.length; x++) {
+                if (pushName[x].checked == true) {
+                    keyArray.push(pushName[x].value);
+                }
+            }
+            console.log("關鍵字暫存 = " + keyArray)
+        }
+    </script>
+
+
+
+</body>
+
+</html>

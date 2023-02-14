@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- 引用google字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!--  -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- 引用fontawesome icon -->
+    <script src="https://kit.fontawesome.com/da3a6ce48e.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <title>討論區</title>
+
+    <style>
+        .css-switcher div {
+            cursor: pointer;
+            display: inline-block;
+            border: 1px #000000 solid;
+            padding: 5px 20px;
+            margin: 20px;
+        }
+
+        .css-switcher div:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .css-switcher div.active {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* HERE COMES IMPORTANT STYLES */
+
+        /* hiding and showing tabs */
+
+        /* .tabs div {
+            height: 0;
+            overflow: hidden;
+            max-height: 0;
+            transition: all 1s linear;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tabs div.current {
+            height: auto;
+            max-height: 200px;
+            transition: all 1s linear;
+            pointer-events: all;
+            opacity: 1;
+        } */
+
+        /* highlighting selected tab menu */
+
+        /* .tabs-menu div.active {
+            background: #000000;
+            color: #ffffff;
+        } */
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="forum-main">
+        <!-- 側邊導覽列 看板選擇 -->
+        <div class="forum-sidemenu">
+            <div class="tabs-menu">
+                <div id="tab-1" class="tabs-menu-item active">公告</div>
+                <div id="tab-2" class="tabs-menu-item">熱門文章</div>
+            </div>
+            <h6>看板</h6>
+            <div class="tabs-menu">
+                <div id="experience" class="tabs-menu-item">心得</div>
+                <div id="video" class="tabs-menu-item">影片</div>
+                <div id="" class="tabs-menu-item">寵物用品</div>
+            </div>
+        </div>
+        <div class="tabs">
+            <a href=""></a>
+            <a href="" style="color: #000;">
+                <div class="tab tab-1 current">
+                </div>
+            </a>
+            
+            <div class="tab tab-2">
+            </div>
+            <div class="tab experience">
+                <span>心得</span><span>2022/10/07</span>
+                <h4>養狗的第一百天</h4>
+                <p>從年底跟我家小笨狗遇見，到現在剛好滿一百天</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 套用資料 -->
+    <script>
+        $(function () {
+            // 文章陣列
+            var articleList = [
+                {
+                    "title": "養狗的第一百天",
+                    "tab": "experience",
+                    "tag": "心得",
+                    "text": "從年底跟我家小笨狗遇見，到現在剛好滿一百天",
+                    "data": "2022/10/07"
+                },
+                {
+                    "title": "可愛傻笑",
+                    "tab": "video",
+                    "tag": "影片",
+                    "text": "怎麼這麼可愛",
+                    "data": "2022/10/07"
+                }
+            ]
+
+            var arttab = "tab";
+
+            // 循環並取出陣列內容至螢幕
+            $.each(articleList, function (index, obj) {
+                var title = obj.title;
+                var arttab = obj.tab;
+                var tag = obj.tag;
+                var text = obj.text;
+                var data = obj.data;
+
+                var List = 
+                `<a asp-area="" asp-controller="" asp-action="">
+                <div class="${arttab} ${arttab}">
+                <span>${tag}</span><span>${data}</span>
+                <h4>${title}</h4>
+                <p>${text}</p>
+                </div>
+                </a>`;
+
+                $(".tabs").append(List);
+            })
+        })
+
+    </script>
+    <!-- 引用分頁效果 -->
+    <script src="/js/tabs.js"></script>
+
+    
+</body>
